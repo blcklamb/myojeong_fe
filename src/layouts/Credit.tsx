@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import SP12 from "assets/credit/sp12.png";
 import SP13 from "assets/credit/sp13.png";
@@ -9,7 +8,8 @@ import { COLORS } from "styles/color";
 import Icon from "components/Icon";
 import Button from "components/story/Button";
 import { useNavigate } from "react-router-dom";
-import { animated, useSpring } from "react-spring";
+import { animated } from "react-spring";
+import useReactSpring from "hooks/useReactSpring";
 
 const Credit = () => {
   const TEAM_DATA = [
@@ -35,16 +35,8 @@ const Credit = () => {
 
   const navigate = useNavigate();
 
-  const [styles] = useSpring(
-    () => ({
-      loop: { reverse: open },
-      from: { factor: 10, opacity: 0.5, scale: 0.9, translateY: 0 },
-      enter: { translateY: 5 },
-      to: { factor: 150, opacity: 1, scale: 1, translateY: 0 },
-      config: { duration: 2000 },
-    }),
-    [open]
-  );
+  const { useShaking } = useReactSpring;
+  const [styles] = useShaking();
 
   return (
     <>

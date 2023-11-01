@@ -6,6 +6,7 @@ import Button from "./Button";
 import { animated, easings, useSpring } from "react-spring";
 import Myojeong from "assets/myojeong.png";
 import { isValidWish } from "utils/validation";
+import useReactSpring from "hooks/useReactSpring";
 
 interface MakeWishProps {
   onNext: (content: string, isOpen: boolean) => void;
@@ -33,17 +34,9 @@ const MakeWish = ({ onNext, fromName, toName }: MakeWishProps) => {
     if (isValidWish(wishContent)) onNext(wishContent, isOpen);
     else alert("소원은 150자 이하애오");
   };
-  const [styles] = useSpring(() => ({
-    loop: { reverse: true },
-    from: { x: -100 },
-    to: { x: 100 },
-    config: {
-      easing: [easings.easeInElastic, easings.easeOutElastic],
-      velocity: 0.005,
-      friction: 120,
-      tension: 280,
-    },
-  }));
+
+  const { useMovingHorizontal } = useReactSpring;
+  const [styles] = useMovingHorizontal();
 
   return (
     <>

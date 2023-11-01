@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import TopButton from "./TopButton";
 import Paragraph from "./Paragraph";
-import RainingMyojeong from "./RainingMyojeong";
+import RainingSongpyeon from "./RainingSongpyeon";
 import { StyledHiddenLayout } from "./Intro";
 
 interface TurnProps {
@@ -17,7 +17,7 @@ const Turn = ({ onNext, onSkip }: TurnProps) => {
       </StyledTop>
       <StyledHiddenLayout onClick={() => onNext()} />
       <StyledMiddle>
-        <RainingMyojeong />
+        <RainingSongpyeon />
       </StyledMiddle>
       <StyledBottom>
         <Paragraph align="center">
